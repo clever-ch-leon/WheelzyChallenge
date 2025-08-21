@@ -1,0 +1,21 @@
+﻿1) Define the database tables using SQL Server syntax for the following case: A customer wants to sell their car so we need the car information 
+	(car year, make, model, and submodel) and location (zip code). Note: make sure to structure the tables so we don’t repeat data. 
+	For each zip code, there’s a list of buyers that are willing to buy the cars and each buyer has a quote (amount). 
+	For example, Buyer ABC will cover 10 zip codes and it will pay $500 for each car. Once the data is saved, the system will pick the best quote and mark it as the current one. 
+	Only one quote can be marked as current and it’s not necessarily the highest quote. We also want to track the progress of the case using different statuses 
+	(Pending Acceptance, Accepted, Picked Up, etc.) and considering that we care about the current status and the status history 
+	(previous statuses indicate when it happened, who changed it, etc.). The status “Picked Up” has a mandatory status date but the rest of the statuses don’t. 
+	Write a SQL query to show the car information, current buyer name with its quote and current status name with its status date. 
+	Do the same thing using Entity Framework. Make sure your queries don’t have any unnecessary data.
+
+
+/***************************************************************************************************************************************************************************/
+																			Solution
+/***************************************************************************************************************************************************************************/
+
+In this case I would apply CodeFirs to generate the database using the model. I decided to implement only what was necessary so as not to delay solving the exercise.
+	The most important things are in the files:
+	- OfferService.cs
+	- OfferRepository.cs
+
+I also took the opportunity to demonstrate how I work with a layered architecture, dependency injection, interfaces, DTOs, and more.

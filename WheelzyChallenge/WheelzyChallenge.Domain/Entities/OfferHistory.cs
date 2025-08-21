@@ -13,7 +13,7 @@ namespace WheelzyChallenge.Domain.Entities
         public int IdOffer { get; set; }
         public string Status { get; set; }
         public DateTime Date { get; set; }
-        public string StaffMember { get; set; }
+        public string StaffMember { get; set; }     //Staff who modified the offer.
 
 
         [JsonIgnore]

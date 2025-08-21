@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WheelzyChallenge.Domain\WheelzyChallenge.Domain.csproj" />
+    <ProjectReference Include="..\WheelzyChallenge.Infra\WheelzyChallenge.Infra.csproj" />
+  </ItemGroup>
+
 </Project>

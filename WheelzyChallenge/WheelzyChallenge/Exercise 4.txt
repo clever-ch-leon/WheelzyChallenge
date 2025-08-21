@@ -1,0 +1,41 @@
+﻿4) Implement the following method using Entity Framework, making sure your query is efficient in all the cases 
+    (when all the parameters are set, when some of them are or when none of them are). 
+    If a “filter” is not set it means that it will not apply any filtering over that field 
+    (no ids provided for customer ids it means we don’t want to filter by customer).
+
+
+/***************************************************************************************************************************************************************************/
+																			Solution
+/***************************************************************************************************************************************************************************/
+
+public async Task<List<OrderDTO>> GetOrders(DateTime? dateFrom, DateTime? dateTo, List<int> customerIds, List<int> statusIds, bool? isActive)
+{
+    var exp = DbContext.Set<Order>().AsQueryable();
+
+    if (dateFrom.HasValue)
+        exp = exp.Where(o => o.OrderDate >= dateFrom.Value);
+
+    if (dateTo.HasValue)
+        exp = exp.Where(o => o.OrderDate <= dateTo.Value);
+
+    if (customerIds != null && customerIds.Any())
+        exp = exp.Where(o => customerIds.Contains(o.CustomerId));
+
+    if (statusIds != null && statusIds.Any())
+        exp = exp.Where(o => statusIds.Contains(o.StatusId));
+
+    if (isActive.HasValue)
+        exp = exp.Where(o => o.IsActive == isActive.Value);
+
+
+    var result = await exp
+                    .Select(o => new OrderDTO
+                    {
+                        CustomerId = o.CustomerId,
+                        StatusId = o.StatusId,
+                        OrderDate = o.OrderDate,
+                        IsActive = o.IsActive
+                    }).ToListAsync();
+
+    return result;
+}

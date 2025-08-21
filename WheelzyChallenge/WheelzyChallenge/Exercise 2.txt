@@ -1,0 +1,10 @@
+﻿2) What would you do if you had data that doesn’t change often but it’s used pretty much all the time? 
+    Would it make a difference if you have more than one instance of your application?
+
+
+/***************************************************************************************************************************************************************************/
+																			Solution
+/***************************************************************************************************************************************************************************/
+
+I would use async methods, state control and try to have different databases for each instance of my application.
+

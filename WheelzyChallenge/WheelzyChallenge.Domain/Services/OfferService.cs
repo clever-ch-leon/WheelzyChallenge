@@ -24,7 +24,7 @@ namespace WheelzyChallenge.Domain.Services
 
 
         /// <summary>
-        /// Show the car information, current buyer name with its quote and current status name with its status date.
+        /// Get the car information, current buyer name with its quote and current status name with its status date.
         /// </summary>
         public List<SaleInformationDTO> GetSalesInformation()
         {
@@ -36,7 +36,6 @@ namespace WheelzyChallenge.Domain.Services
             {
                 salesInformation.Add(offerToSaleInformationTransformer.ConvertOfferToSaleInformationDTO(offer));
             }
-
 
             return salesInformation;
         }

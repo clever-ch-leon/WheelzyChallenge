@@ -1,0 +1,15 @@
+﻿5) Create a C# method that would read all the .cs files from a folder and subfolders and apply actions. These are the possible actions:
+	a) Search for async methods where the name of the method doesn’t have Async as a suffix. When that case is found, modify the name of the method (no need to update references).
+	b) Search for any word that ends in Vm, Vms, Dto or Dtos and rename them to VM, VMs, DTO, and DTOs respectively
+	c) Find methods that don’t have a blank line between them and add the blank line.
+Add unit tests to validate these cases are working as expected.
+
+
+/***************************************************************************************************************************************************************************/
+																			Solution
+/***************************************************************************************************************************************************************************/
+
+I'm sorry, but in this case, I don't have any experience working with modifying physical project files. 
+But I assure you that while I wait for your feedback, I'll look into it.
+
+I really enjoyed doing the exercises. Thanks for the challenge!

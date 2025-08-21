@@ -1,0 +1,37 @@
+﻿3) Analyze the following method and make changes to make it better. Explain your changes.
+
+public void UpdateCustomersBalanceByInvoices(List<Invoice> invoices)
+{
+    foreach (var invoice in invoices)
+    {
+        var customer = DbContext.Customers.SingleOrDefault(invoice.CustomerId.Value);
+        customer.Balance -= invoice.Total;
+        DbContext.SaveChanges();
+    }
+}
+
+/***************************************************************************************************************************************************************************/
+																			Solution
+/***************************************************************************************************************************************************************************/
+
+The simplest thing is to assume that the Customers table is not very big and can be kept in memory, use async methods and save all changes at the end.
+
+
+public async Task UpdateCustomersBalanceByInvoices(List<Invoice> invoices)
+{
+    var customers = CustomerService.GetAllCustomers();  //No repeat customers
+    var customersToUpdate = new ConcurrentBag<Customer>();
+
+    foreach (var invoice in invoices)
+    {
+        var customer = customers.FirstOrDefault(invoice.CustomerId.Value);
+
+        if (customer != null)
+        {
+            UpdateCustomerBalance(customer, invoice.Total);
+            customersToUpdate.Add(customer);
+        }
+    }
+    
+    await CustomerService.BulkUpdateAsync(customersToUpdate);
+}
