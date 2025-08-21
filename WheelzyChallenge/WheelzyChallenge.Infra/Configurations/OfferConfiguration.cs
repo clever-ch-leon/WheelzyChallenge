@@ -30,6 +30,9 @@ namespace WheelzyChallenge.Infra.Configurations
             builder.Property(o => o.Status)
                 .IsRequired();
 
+            builder.Property(o => o.Date)
+                .HasColumnType("date");
+
             builder.HasOne(o => o.Buyer)
                    .WithMany(b => b.Offers)
                    .HasForeignKey(o => o.IdBuyer)

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using WheelzyChallenge.Domain.Entities;
 
 namespace WheelzyChallenge.Infra.Context
 {
@@ -23,5 +24,7 @@ namespace WheelzyChallenge.Infra.Context
 
             Seed.SeedData(modelBuilder);
         }
+
+        public virtual DbSet<Offer> Offers { get; set; }
     }
 }
